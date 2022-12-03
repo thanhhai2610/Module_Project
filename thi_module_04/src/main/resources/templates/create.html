@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show blog list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container-fluid table table-success table-striped">
+    <div class="row" style="width: 100%; padding: 0; margin: 0;">
+        <div id="content">
+            <h1 style="text-align: center; color: blue">Thêm mới </h1>
+
+            <form action="/product/create" th:object="${productDto}"
+                  method="post" novalidate="novalidate">
+
+                <fieldset style="width: 50%; margin-left: 25%">
+                    <legend>Nhập thông tin</legend>
+                    <table class="table table-striped" style="text-align: left">
+                        <input type="hidden" th:field="*{id}"/>
+                        <tr>
+                            <td>Tên san pham</td>
+                            <td><input type="text" th:field="*{name}"></td>
+                            <td> <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p></td>
+
+                        </tr>
+                        <tr>
+                            <td>Gia san pham</td>
+                            <td><input type="text" th:field="*{price}"></td>
+                            <td> <p style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p></td>
+
+                        </tr>
+                        <tr>
+                            <td>Mo ta san pham</td>
+                            <td><input type="text" th:field="*{descriptionProduct}"></td>
+                            <td> <p style="color: red" th:if="${#fields.hasErrors('descriptionProduct')}" th:errors="*{descriptionProduct}"></p></td>
+
+                        </tr>
+                        <tr>
+                            <td>Nha san xuat</td>
+                            <td>
+                                <select th:field="*{producer}">
+                                    <option th:each="data: ${producerList}"
+                                            th:value="${data.id}"
+                                            th:text="${data.name}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary"> Lưu</button>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous">
+</script>
+
+
+</body>
+</html>
