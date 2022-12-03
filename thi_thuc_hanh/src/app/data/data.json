@@ -1,0 +1,92 @@
+{
+  "quanLyVe": [
+    {
+      "id": 1,
+      "gia": 10,
+      "diemDi": "Da Nang",
+      "diemDen": "Nha Trang",
+      "ngayKhoiHanh": "12-12-2022",
+      "gioKhoiHanh": "14:30",
+      "soLuong": 0,
+      "nhaXe": {
+        "id": 1,
+        "ten": "nha xe1 "
+      }
+    },
+    {
+      "id": 2,
+      "gia": 10,
+      "diemDi": "Da Nang 1",
+      "diemDen": "Nha Trang 1",
+      "ngayKhoiHanh": "12-12-2022",
+      "gioKhoiHanh": "14:30",
+      "soLuong": 0,
+      "nhaXe": {
+        "id": 2,
+        "ten": "nha xe2 "
+      }
+    },
+    {
+      "gia": "321321321",
+      "diemDi": "1",
+      "diemDen": "2",
+      "ngayKhoiHanh": "2022-12-10",
+      "gioKhoiHanh": "14:30",
+      "soLuong": 2,
+      "nhaXe": {
+        "id": 2,
+        "ten": "nha xe2 "
+      },
+      "id": 3
+    },
+    {
+      "gia": 600000,
+      "diemDi": "3",
+      "diemDen": "4",
+      "ngayKhoiHanh": "2022-12-16",
+      "gioKhoiHanh": "10:06",
+      "soLuong": 24,
+      "nhaXe": {
+        "id": 1,
+        "ten": "nha xe1 "
+      },
+      "id": 4
+    },
+    {
+      "gia": 130,
+      "diemDi": "Quang Nam",
+      "diemDen": "Binh Dinh",
+      "ngayKhoiHanh": "2022-12-26",
+      "gioKhoiHanh": "22:30",
+      "soLuong": 20,
+      "nhaXe": {
+        "id": 2,
+        "ten": "nha xe2 "
+      },
+      "id": 5
+    },
+    {
+      "gia": 22222,
+      "diemDi": "1",
+      "diemDen": "2",
+      "ngayKhoiHanh": "2022-12-25",
+      "gioKhoiHanh": "11:28",
+      "soLuong": 11,
+      "nhaXe": {
+        "id": 1,
+        "ten": "nha xe1 "
+      },
+      "id": 6
+    }
+  ],
+  "nhaXe": [
+    {
+      "id": 1,
+      "ten": "nha xe1 "
+    },
+    {
+      "id": 2,
+      "ten": "nha xe2 "
+    }
+  ]
+}
