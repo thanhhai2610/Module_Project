@@ -1,0 +1,33 @@
+package vn.thanhhai.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import vn.thanhhai.model.NhaXe;
+import vn.thanhhai.model.QuanLyVe;
+import vn.thanhhai.service.INhaXeService;
+import vn.thanhhai.service.IQuanLyVeService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/nhaXe/v1")
+public class NhaXeRestController {
+
+    @Autowired
+    private INhaXeService nhaXeService;
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping
+    public ResponseEntity<List<NhaXe>> nhaXe() {
+        List<NhaXe> nhaXeList = nhaXeService.myFindAll();
+        if (nhaXeList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(nhaXeList, HttpStatus.OK);
+    }
+}
