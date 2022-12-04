@@ -1,0 +1,71 @@
+<div class="container">
+  <h1 class="mt-5 mb-5" routerLink="/">Danh sách</h1>
+  <a class="btn btn-warning" routerLink="/create">Create</a>
+
+  <div class="mt-2">
+    <input [(ngModel)]="diemDiSearch" type="text" name="nameSearch" placeholder="Search diem di"
+           style="margin-right: 10px">
+
+    <input [(ngModel)]="diemDenSearch" type="text" name="nameSearch" placeholder="Search diem den"
+           style="margin-right: 10px">
+
+    <input [(ngModel)]="ngay1Serch" type="date" name="nameSearch" placeholder="Search tu ngay"
+           style="margin-right: 10px">
+
+    <input [(ngModel)]="ngay2Search" type="date" name="nameSearch" placeholder="Search den ngay"
+           style="margin-right: 10px">
+
+    <input type="submit" value="Search" (click)="search()">
+  </div>
+
+  <div class="mt-2">
+    <table class="table table-bordered table-primary table-striped">
+      <thead>
+      <tr>
+        <th>STT</th>
+        <th>Gia</th>
+        <th>Diem di</th>
+        <th>Diem den</th>
+        <th>Ngay khoi hanh</th>
+        <th>Gio khoi hanh</th>
+        <th>So luong</th>
+        <th>Nha xe</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let x of quanLyVe | paginate: {itemsPerPage:3,currentPage:p}; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{x.gia}}</td>
+        <td>{{x.diemDi}}</td>
+        <td>{{x.diemDen}}</td>
+        <td>{{x.ngayKhoiHanh}}</td>
+        <td>{{x.gioKhoiHanh}}</td>
+        <td>{{x.soLuong}}</td>
+        <td>{{x.nhaXe.ten}}</td>
+        <td>
+          <button type="button" class="btn btn-primary  " data-bs-toggle="modal" data-bs-target="#modalDelete"
+                  (click)="modalById(x.id)"> Dat ve
+          </button>
+          |
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalDelete"
+                  [routerLink]="['/edit',x.id]"> Edit
+          </button>
+          |
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"
+                  [routerLink]="['/delete',x.id]"> Delete
+          </button>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-right">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+  </div>
+
+</div>
+

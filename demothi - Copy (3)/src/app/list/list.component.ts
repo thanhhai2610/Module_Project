@@ -4,7 +4,6 @@ import {QuanLyVe} from "../model/quan-ly-ve";
 import {QuanlyveService} from "../service/quanlyve.service";
 import {ToastrService} from "ngx-toastr";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-list',
@@ -17,7 +16,6 @@ export class ListComponent implements OnInit {
   quanLyVeO: QuanLyVe;
   nhaXeList: NhaXe[] = [];
 
-
   p: number;
 
   diemDiSearch: string;
@@ -25,23 +23,10 @@ export class ListComponent implements OnInit {
   ngay1Serch: string;
   ngay2Search: string;
 
-  rfquanLyve: FormGroup = new FormGroup({
-    id: new FormControl(),
-    gia: new FormControl(),
-    diemDi: new FormControl(),
-    diemDen: new FormControl(),
-    ngayKhoiHanh: new FormControl(),
-    gioKhoiHanh: new FormControl(),
-    soLuong: new FormControl(),
-    nhaXe: new FormControl(),
-
-  });
-
   constructor(private quanlyveService: QuanlyveService,
+              private toast: ToastrService,
               private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private formBuiler: FormBuilder,
-              private toast: ToastrService
+              private router: Router
   ) {
   }
 
@@ -52,7 +37,6 @@ export class ListComponent implements OnInit {
     this.ngay2Search = '';
 
     this.p;
-
     this.quanlyveService.getList().subscribe(
       data => {
         this.quanLyVe = data
@@ -66,19 +50,20 @@ export class ListComponent implements OnInit {
   search() {
     this.quanlyveService.searchBy(this.diemDiSearch, this.diemDenSearch).subscribe(
       data => {
-        this.p = 1;
-        this.quanLyVe = data.filter(value => {
-          if (this.ngay1Serch !== "" && this.ngay2Search !== "") {
-            const format = new Date(value.ngayKhoiHanh);
-            const ngay1Search = new Date(this.ngay1Serch);
-            const ngay2Search = new Date(this.ngay2Search);
-            if (format >= ngay1Search && format <= ngay2Search) {
-              return value;
+        this.quanLyVe = data.filter(
+          value => {
+            if (this.ngay1Serch !== "" && this.ngay2Search !== "") {
+              const format = new Date(value.ngayKhoiHanh);
+              const ngay1Search = new Date(this.ngay1Serch);
+              const ngay2Search = new Date(this.ngay2Search);
+              if (format > ngay1Search && format < ngay2Search) {
+                return value;
+              }
+
+            } else {
+              return data;
             }
-          } else {
-            return data;
-          }
-        })
+          })
       });
   }
 
@@ -88,14 +73,14 @@ export class ListComponent implements OnInit {
     })
   }
 
-
   submit() {
     if (this.quanLyVeO.soLuong > 0) {
       this.quanLyVeO.soLuong = this.quanLyVeO.soLuong - 1;
-      this.quanlyveService.updateProduct(this.quanLyVeO.id, this.quanLyVeO).subscribe(data => {
+      this.quanlyveService.update(this.quanLyVeO.id, this.quanLyVeO).subscribe(data => {
         this.ngOnInit();
       });
     }
   }
+
 
 }

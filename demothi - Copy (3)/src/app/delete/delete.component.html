@@ -1,0 +1,74 @@
+
+<div class="container">
+  <h1>Xoa </h1>
+  <form class="row g-3 needs-validation" novalidate autocomplete="off"
+        [formGroup]="rfquanLyve" *ngIf="rfquanLyve" (ngSubmit)="submitDelete(id)">
+
+    <div class="mb-3">
+      <label class="form-label">Diem di</label>
+
+      <input type="text" class="form-control" required
+             formControlName="diemDi" />
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Diem den</label>
+
+      <input type="text" class="form-control" required
+             formControlName="diemDen"/>
+    </div>
+
+
+    <div class="mb-1">
+      <label class="form-label">Nha xe</label>
+
+      <input type="text" class="form-control" required
+             formControlName="nhaXe" />
+
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Ngay khoi hanh</label>
+
+      <input type="date" class="form-control" required
+             formControlName="ngayKhoiHanh"/>
+
+
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Gio khoi hanh </label>
+
+      <input type="time" class="form-control" required
+             formControlName="gioKhoiHanh"/>
+
+
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">So Luong</label>
+
+      <input type="number" class="form-control" required
+             formControlName="soLuong"/>
+
+
+    </div>
+    <div class="mb-1">
+      <label class="form-label">Gia</label>
+
+      <input type="number" class="form-control" required
+             formControlName="gia"/>
+
+    </div>
+
+    <div class="mb-1">
+      <button class="btn btn-primary" type="submit"
+              [disabled]="!rfquanLyve.valid"
+      >Luu
+      </button> |
+
+      <button class="btn btn-warning" routerLink="/">Tro ve</button>
+
+    </div>
+  </form>
+</div>

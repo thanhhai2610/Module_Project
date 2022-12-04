@@ -1,0 +1,138 @@
+<div class="container">
+  <h1>Chinh sua </h1>
+  <form class="row g-3 needs-validation" novalidate autocomplete="off"
+        [formGroup]="rfquanLyve" *ngIf="rfquanLyve" (ngSubmit)="submit()">
+
+    <div class="mb-3">
+      <label class="form-label">Diem di</label>
+
+      <input type="text" class="form-control" required
+             formControlName="diemDi"
+             [ngClass]="(rfquanLyve.controls['gia'].touched) ?
+             (rfquanLyve.controls['diemDi'].errors ? 'is-invalid' : 'is-valid') : '' "
+      />
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['diemDi'].errors?.required
+        && (rfquanLyve.controls['diemDi'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Diem den</label>
+
+      <input type="text" class="form-control" required
+             formControlName="diemDen"
+             [ngClass]="(rfquanLyve.controls['diemDen'].touched) ?
+             (rfquanLyve.controls['diemDen'].errors ? 'is-invalid' : 'is-valid') : '' "
+      />
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['diemDen'].errors?.required
+        && (rfquanLyve.controls['diemDen'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+
+    <div class="mb-1">
+      <label class="form-label">Nha xe</label>
+
+      <select class="form-control" required
+              formControlName="nhaXe"
+              [compareWith]="equals"
+              [ngClass]="(rfquanLyve.controls['nhaXe'].touched) ?
+             (rfquanLyve.controls['nhaXe'].errors ? 'is-invalid' : 'is-valid') : '' ">
+        <option *ngFor="let item of nhaXeList" [ngValue]="item">{{item.ten}}</option>
+      </select>
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['nhaXe'].hasError('required')
+        && (rfquanLyve.controls['nhaXe'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Ngay khoi hanh</label>
+
+      <input type="date" class="form-control" required
+             formControlName="ngayKhoiHanh"
+             [ngClass]="(rfquanLyve.controls['ngayKhoiHanh'].touched) ?
+             (rfquanLyve.controls['ngayKhoiHanh'].errors ? 'is-invalid' : 'is-valid') : '' "
+      />
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['ngayKhoiHanh'].errors?.required
+        && (rfquanLyve.controls['ngayKhoiHanh'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Gio khoi hanh </label>
+
+      <input type="time" class="form-control" required
+             formControlName="gioKhoiHanh"
+             [ngClass]="(rfquanLyve.controls['gioKhoiHanh'].touched) ?
+             (rfquanLyve.controls['gioKhoiHanh'].errors ? 'is-invalid' : 'is-valid') : '' "
+      />
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['gioKhoiHanh'].errors?.required
+        && (rfquanLyve.controls['gioKhoiHanh'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">So Luong</label>
+
+      <input type="number" class="form-control" required
+             formControlName="soLuong"
+             [ngClass]="(rfquanLyve.controls['soLuong'].touched) ?
+             (rfquanLyve.controls['soLuong'].errors ? 'is-invalid' : 'is-valid') : '' "/>
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['soLuong'].errors?.required
+        && (rfquanLyve.controls['soLuong'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <label class="form-label">Gia</label>
+
+      <input type="number" class="form-control" required
+             formControlName="gia"
+             [ngClass]="(rfquanLyve.controls['gia'].touched) ?
+             (rfquanLyve.controls['gia'].errors ? 'is-invalid' : 'is-valid') : '' "
+      />
+
+      <div class="invalid-feedback">
+        <div *ngIf="rfquanLyve.controls['gia'].errors?.required
+        && (rfquanLyve.controls['gia'].touched) ">
+          Không được để trống!
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-1">
+      <button class="btn btn-primary" type="submit"
+              [disabled]="!rfquanLyve.valid"
+      >Luu
+      </button>
+      |
+
+      <button class="btn btn-warning" routerLink="/">Tro ve</button>
+
+    </div>
+  </form>
+</div>

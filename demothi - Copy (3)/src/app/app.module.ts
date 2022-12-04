@@ -11,12 +11,16 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    EditComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

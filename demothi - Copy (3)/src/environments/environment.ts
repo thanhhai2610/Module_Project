@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url_quanLyve: 'http://localhost:3000/quanLyve',
-  api_url_nhaXe: 'http://localhost:3000/nhaXe',
+  api_url_quanLyve: 'http://localhost:8080/api/quanLyVe/v1',
+  api_url_nhaXe: 'http://localhost:8080/api/nhaXe/v1',
 
 };
 

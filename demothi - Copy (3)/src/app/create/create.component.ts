@@ -14,17 +14,7 @@ export class CreateComponent implements OnInit {
 
   nhaXe: NhaXe[] = [];
 
-  rfquanLyve: FormGroup = new FormGroup({
-    id: new FormControl(),
-    gia: new FormControl(),
-    diemDi: new FormControl(),
-    diemDen: new FormControl(),
-    ngayKhoiHanh: new FormControl(),
-    gioKhoiHanh: new FormControl(),
-    soLuong: new FormControl(),
-    nhaXe: new FormControl(),
-
-  });
+  rfquanLyve: FormGroup;
 
   constructor(private quanlyveService: QuanlyveService,
               private router: Router,
@@ -35,9 +25,12 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.quanlyveService.findAllNhaXe().subscribe(data => {
+
+      this.nhaXe = data;
+
       this.rfquanLyve = this.formBuiler.group({
         gia: ['',
-          [Validators.required, Validators.min(0)]],
+          [Validators.required]],
         diemDi: ['',
           [Validators.required]],
         diemDen: ['',
@@ -47,11 +40,10 @@ export class CreateComponent implements OnInit {
         gioKhoiHanh: ['',
           [Validators.required]],
         soLuong: ['',
-          [Validators.required, Validators.min(0)]],
+          [Validators.required]],
         nhaXe: ['',
           [Validators.required]],
       })
-      this.nhaXe = data;
     })
   }
 

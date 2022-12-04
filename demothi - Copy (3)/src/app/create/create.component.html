@@ -8,7 +8,7 @@
 
       <input type="text" class="form-control" required
              formControlName="diemDi"
-             [ngClass]="(rfquanLyve.controls['diemDi'].touched) ?
+             [ngClass]="(rfquanLyve.controls['gia'].touched) ?
              (rfquanLyve.controls['diemDi'].errors ? 'is-invalid' : 'is-valid') : '' "
       />
 
@@ -106,12 +106,6 @@
           Không được để trống!
         </div>
       </div>
-      <div class="invalid-feedback">
-        <div *ngIf="rfquanLyve.controls['soLuong'].errors?.min
-        && (rfquanLyve.controls['soLuong'].touched) ">
-          Ban phai nhap so duong!
-        </div>
-      </div>
     </div>
     <div class="mb-3">
       <label class="form-label">Gia</label>
@@ -128,20 +122,14 @@
           Không được để trống!
         </div>
       </div>
-      <div class="invalid-feedback">
-        <div *ngIf="rfquanLyve.controls['gia'].errors?.min
-        && (rfquanLyve.controls['gia'].touched) ">
-          Ban phai nhap so duong!
-        </div>
-      </div>
     </div>
 
     <div class="mb-3">
-
       <button class="btn btn-primary" type="submit"
-              [disabled]="!rfquanLyve.valid">Them moi
-      </button>
-      |
+              [disabled]="!rfquanLyve.valid"
+      >Submit
+      </button> |
+
       <button class="btn btn-warning" routerLink="/">Tro ve</button>
 
     </div>

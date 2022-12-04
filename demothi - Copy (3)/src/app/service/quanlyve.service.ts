@@ -27,18 +27,22 @@ export class QuanlyveService {
     return this.httpClient.post<QuanLyVe>(
       environment.api_url_quanLyve, quanLyVe);
   }
+
   searchBy(diemDi: string, diemDen: string): Observable<QuanLyVe[]> {
     return this.httpClient.get<QuanLyVe[]>(environment.api_url_quanLyve + `?diemDi_like=${diemDi}&diemDen_like=${diemDen}`);
   }
+
   findById(id: number) {
     return this.httpClient.get<QuanLyVe>(environment.api_url_quanLyve + '/' + id);
   }
 
-
-  updateProduct(id: number, quanLyVe: QuanLyVe ): Observable<QuanLyVe> {
+  update(id: number, quanLyVe: QuanLyVe): Observable<QuanLyVe> {
     return this.httpClient.put<QuanLyVe>(environment.api_url_quanLyve + '/' + id, quanLyVe);
   }
 
+  delete(id: number): Observable<QuanLyVe> {
+    return this.httpClient.delete<QuanLyVe>(environment.api_url_quanLyve + '/' + id);
+  }
 
 
 }
